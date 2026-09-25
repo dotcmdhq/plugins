@@ -14,9 +14,7 @@ return function(options)
         url = "https://github.com/ninja-build/ninja/releases/download/v" .. version
             .. "/ninja-" .. name .. ".zip",
         sha256 = options.sha256[host.os][host.arch],
-        prepare = function(input, output)
-            extract(input, output)
-        end,
+        prepare = extract,
     }
 
     return directory .. "/ninja" .. (host.os == "windows" and ".exe" or "")
